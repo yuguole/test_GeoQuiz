@@ -17,6 +17,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".QuizActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,8 +29,9 @@
         <activity android:name=".Fragment.Homepage" />
         <activity android:name=".Fragment.Informpage" />
         <activity android:name=".Fragment.Personpage" />
+        <activity android:name=".Fragment.FragmentMain" />
 
-        <activity android:name=".Fragment.FragmentMain"></activity>
+        <activity android:name=".AskActivity"></activity>
     </application>
 
 </manifest>

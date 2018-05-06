@@ -29,7 +29,9 @@ public class login1Activity extends AppCompatActivity implements View.OnClickLis
     private Button register;
     private Button login;
 
-    public String usernameStr,passwordStr;
+
+
+    public static String usernameStr,passwordStr;
     public String Url = "http://yuguole.pythonanywhere.com/Iknow/login";
 
     @Override
@@ -160,6 +162,14 @@ public class login1Activity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
+    /*
+    public void setUsername(String UsernameStr){
+        this.usernameStr=UsernameStr;
+    }
+
+    public String getUsername(){
+        return usernameStr;
+    }*/
 }
 
 /*

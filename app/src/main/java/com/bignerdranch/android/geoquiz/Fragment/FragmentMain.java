@@ -13,6 +13,9 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.UUID;
 
 public class FragmentMain extends FragmentActivity implements
         OnClickListener {
@@ -72,6 +75,7 @@ public class FragmentMain extends FragmentActivity implements
         switch (view.getId()) {
             case R.id.home_layout:
                 setChioceItem(0);
+                //Toast.makeText(this, gray, Toast.LENGTH_SHORT).show();
                 break;
             case R.id.inform_layout:
                 setChioceItem(1);

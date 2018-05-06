@@ -111,6 +111,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                 new Response.Listener<JSONObject>() {
                     @Override
                     public void onResponse(JSONObject response) {
+
+
                         int status = response.optInt("status");
 //                判断注册的状态
                         if (status == 200) {
