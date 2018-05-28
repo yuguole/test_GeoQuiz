@@ -17,6 +17,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
 import com.bignerdranch.android.geoquiz.Fragment.FragmentMain;
+import com.bignerdranch.android.geoquiz.Fragment.Homepage;
 
 import org.json.JSONObject;
 
@@ -57,7 +58,7 @@ public class login1Activity extends AppCompatActivity implements View.OnClickLis
                 register();
                 break;
             case R.id.login1:
-                Toast.makeText(this, Url, Toast.LENGTH_SHORT).show();
+                //Toast.makeText(this, Url, Toast.LENGTH_SHORT).show();
                 if(submit()){
                     login1(Url);
                 }
@@ -131,7 +132,7 @@ public class login1Activity extends AppCompatActivity implements View.OnClickLis
                         if (status == 200) {
                             Toast.makeText(getApplicationContext(), "登录成功", Toast.LENGTH_SHORT).show();
                             //toHome();
-                            Intent intent2 = new Intent(login1Activity.this, FragmentMain.class);
+                            Intent intent2=new Intent(login1Activity.this,FragmentMain.class);
                             startActivity(intent2);
 
                             //finish();

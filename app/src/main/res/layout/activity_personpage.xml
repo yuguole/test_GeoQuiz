@@ -9,9 +9,55 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:background="#BDFCC9"
+        android:background="@color/white"
         android:orientation="vertical">
+
+        <android.support.design.widget.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:theme="@style/AppTheme.AppBarOverlay">
+
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_person"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        </android.support.design.widget.AppBarLayout>
+
+
+
+        <Button
+            android:id="@+id/person_myask"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_margin="5dp"
+            android:background="#FFEC8B"
+            android:text="我提出的问题"
+            android:textSize="24sp"
+            android:typeface="sans"/>
+
+        <Button
+            android:id="@+id/person_mylabel"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_margin="5dp"
+            android:background="#FFEC8B"
+            android:text="标签"
+            android:textSize="24sp"
+            android:typeface="sans"/>
+
+        <Button
+            android:id="@+id/person_myreply"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_margin="5dp"
+            android:background="#FFEC8B"
+            android:text="我回答过的问题"
+            android:textSize="24sp"
+            android:typeface="sans"/>
+
 
 
     </LinearLayout>

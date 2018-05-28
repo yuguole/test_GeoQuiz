@@ -4,39 +4,32 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#F2F2F2"
     tools:context=".Fragment.Homepage">
+
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
-        android:background="#FAECD8"
+        android:background="#F2F2F2"
         android:orientation="vertical">
 
-        <LinearLayout
+        <android.support.design.widget.AppBarLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_gravity="fill_horizontal">
+            android:theme="@style/AppTheme.AppBarOverlay">
 
-            <EditText
-                android:id="@+id/sousuo"
+            <android.support.v7.widget.Toolbar
+                android:id="@+id/toolbar_main"
                 android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_weight="6"
-                android:hint="你想知道些什么"
-                android:background="@drawable/ic_tabbar_bg_click"/>
+                android:layout_height="?attr/actionBarSize"
+                android:background="?attr/colorPrimary"
+                app:popupTheme="@style/AppTheme.PopupOverlay" />
 
-            <Button
-                android:id="@+id/ask"
-                android:layout_width="60dp"
-                android:layout_height="60dp"
-                android:layout_weight="1"
-                android:text="提问"
-                android:textColor="#fff000"
-                android:bufferType="spannable"
-                android:background="#aaBfff"/>
-        </LinearLayout>
+        </android.support.design.widget.AppBarLayout>
+
+
+
 
        <android.support.v4.widget.SwipeRefreshLayout
            android:id="@+id/swipelayout"
@@ -46,7 +39,8 @@
            <android.support.v7.widget.RecyclerView
                android:id="@+id/recyclerview"
                android:layout_width="match_parent"
-               android:layout_height="wrap_content">
+               android:layout_height="wrap_content"
+               android:background="#F2F2F2">
 
            </android.support.v7.widget.RecyclerView>
 

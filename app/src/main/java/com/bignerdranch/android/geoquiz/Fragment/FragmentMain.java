@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
+import android.widget.Toolbar;
 
 import java.util.UUID;
 
@@ -44,11 +45,14 @@ public class FragmentMain extends FragmentActivity implements
     //定义FragmentManager对象
     FragmentManager fManager;
 
+    //private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fragmentmain);
         fManager = getSupportFragmentManager();
+
         initViews();
     }
 
