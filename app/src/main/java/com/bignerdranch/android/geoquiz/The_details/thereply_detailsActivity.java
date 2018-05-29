@@ -2,7 +2,8 @@ package com.bignerdranch.android.geoquiz.The_details;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.widget.Button;
+import android.support.v7.widget.Toolbar;
+import android.view.MenuItem;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -12,7 +13,6 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
-import com.bignerdranch.android.geoquiz.Fragment.Homepage;
 import com.bignerdranch.android.geoquiz.R;
 
 import org.json.JSONObject;
@@ -20,10 +20,12 @@ import org.json.JSONObject;
 import java.util.HashMap;
 import java.util.Map;
 
-public class thereply_detailsActivity extends AppCompatActivity {
+public class thereply_detailsActivity extends AppCompatActivity implements Toolbar.OnMenuItemClickListener {
     private TextView thereply_user;
     private TextView thereply_time;
     private TextView thereply_details;
+
+    private Toolbar thereply_toolbar;
 
     private String there_asktitle;
     //private Button button_addreply;
@@ -43,6 +45,12 @@ public class thereply_detailsActivity extends AppCompatActivity {
         thereply_user=(TextView)findViewById(R.id.thereply_user);
         thereply_time=(TextView)findViewById(R.id.thereply_time);
         thereply_details=(TextView)findViewById(R.id.thereply_details);
+
+        thereply_toolbar = (Toolbar) findViewById(R.id.toolbar_thereply);
+        //thereply_toolbar.setTitle();//标题
+
+        thereply_toolbar.inflateMenu(R.menu.menu_thereply);
+        thereply_toolbar.setOnMenuItemClickListener(this);
 
         initText();
     }
@@ -76,6 +84,7 @@ public class thereply_detailsActivity extends AppCompatActivity {
 
                             JSONObject there_ask = response.optJSONObject("re_ask");
                             there_asktitle=there_ask.optString("ask_title");
+                            thereply_toolbar.setTitle(there_asktitle);//标题
                         }
                         //Toast.makeText(getActivity(), mDatas.toString(), Toast.LENGTH_SHORT).show();
                     }
@@ -89,4 +98,8 @@ public class thereply_detailsActivity extends AppCompatActivity {
         queue.add(request);
     }
 
+    @Override
+    public boolean onMenuItemClick(MenuItem item) {
+        return false;
+    }
 }

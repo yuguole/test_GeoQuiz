@@ -178,146 +178,146 @@ public class Homepage extends Fragment implements Toolbar.OnMenuItemClickListene
     //提问按钮跳转
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
+                super.onActivityCreated(savedInstanceState);
 
-        toolbar=(Toolbar)getActivity().findViewById(R.id.toolbar_main);
-        toolbar.setTitle("首页");//标题
-       // ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
-        toolbar.inflateMenu(R.menu.menu_homepage);
-        //setHasOptionsMenu(true);
-        //((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
-        //setHasOptionsMenu(true);
-        toolbar.setOnMenuItemClickListener(this);
+                toolbar=(Toolbar)getActivity().findViewById(R.id.toolbar_main);
+                toolbar.setTitle("首页");//标题
+                // ((AppCompatActivity)getActivity()).setSupportActionBar(toolbar);
+                toolbar.inflateMenu(R.menu.menu_homepage);
+                //setHasOptionsMenu(true);
+                //((AppCompatActivity) getActivity()).setSupportActionBar(toolbar);
+                //setHasOptionsMenu(true);
+                toolbar.setOnMenuItemClickListener(this);
 
-        MenuItem searchItem=  toolbar.getMenu().findItem(R.id.homepage_search);//findViewById(R.id.homepage_search);
-        mSearchView = (SearchView) MenuItemCompat.getActionView(searchItem);
-        initSearchView(searchItem);//搜索
+                MenuItem searchItem=  toolbar.getMenu().findItem(R.id.homepage_search);//findViewById(R.id.homepage_search);
+                mSearchView = (SearchView) MenuItemCompat.getActionView(searchItem);
+                initSearchView(searchItem);//搜索
 
 
-        initListener();//下拉刷新
-        inititemClick();//点击跳转
+                initListener();//下拉刷新
+                inititemClick();//点击跳转
 
-    }
-
-    private void initSearchView(final MenuItem item) {
-
-        //通过 item 获取 actionview
-
-        findList=new ArrayList<AskBean>();
-        mSearchView.setQueryHint("你想知道些什么");
-
-        //Toast.makeText(getActivity(), mSearchView.toString(), Toast.LENGTH_SHORT).show();
-        mSearchView.setSubmitButtonEnabled(true);
-
-        mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-
-                if (TextUtils.isEmpty(query)){
-                    Toast.makeText(getActivity(),"请输入查找内容！",Toast.LENGTH_SHORT).show();
-                    noteRecycler.setAdapter(mAdapter);
-                }
-                else {
-                    findList.clear();
-                    for (int i=0;i<mDatas.size();i++){
-                        AskBean information=mDatas.get(i);
-                        if (information.getTitle().contains(query)
-                                ||information.getDetails().contains(query)
-                                ||information.getAskuser().contains(query))
-                        {
-                            findList.add(information);
-                        }
-                    }
-                    if (findList.size()==0){
-                        Toast.makeText(getActivity(),"未搜索到结果",Toast.LENGTH_SHORT).show();
-
-                    }
-                    else {
-                        Log.i("NewActivity", "###length="+findList.size());
-                        Toast.makeText(getActivity(), "查找成功", Toast.LENGTH_SHORT).show();
-                        findListAdapter=new DataAdapter(getActivity(),findList);
-                        //findListAdapter.set
-                        noteRecycler.setAdapter(findListAdapter);
-                        findListAdapter.notifyDataSetChanged();
-                    }
-                }
-
-                return true;
             }
 
-            //在输入时触发的方法，当字符真正显示到searchView中才触发，像是拼音，在输入法组词的时候不会触发
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                if (TextUtils.isEmpty(newText)){
-                    noteRecycler.setAdapter(mAdapter);
-                }
-                else {
-                    findList.clear();
-                    for (int i=0;i<mDatas.size();i++){
-                        AskBean information=mDatas.get(i);
-                        if (information.getTitle().contains(newText))
-                        {
-                            findList.add(information);
+            private void initSearchView(final MenuItem item) {
+
+                //通过 item 获取 actionview
+
+                findList=new ArrayList<AskBean>();
+                mSearchView.setQueryHint("你想知道些什么");
+
+                //Toast.makeText(getActivity(), mSearchView.toString(), Toast.LENGTH_SHORT).show();
+                mSearchView.setSubmitButtonEnabled(true);
+
+                mSearchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                    @Override
+                    public boolean onQueryTextSubmit(String query) {
+
+                        if (TextUtils.isEmpty(query)){
+                            Toast.makeText(getActivity(),"请输入查找内容！",Toast.LENGTH_SHORT).show();
+                            noteRecycler.setAdapter(mAdapter);
                         }
+                        else {
+                            findList.clear();
+                            for (int i=0;i<mDatas.size();i++){
+                                AskBean information=mDatas.get(i);
+                                if (information.getTitle().contains(query)
+                                        ||information.getDetails().contains(query)
+                                        ||information.getAskuser().contains(query))
+                                {
+                                    findList.add(information);
+                                }
+                            }
+                            if (findList.size()==0){
+                                Toast.makeText(getActivity(),"未搜索到结果",Toast.LENGTH_SHORT).show();
+
+                            }
+                            else {
+                                Log.i("NewActivity", "###length="+findList.size());
+                                Toast.makeText(getActivity(), "查找成功", Toast.LENGTH_SHORT).show();
+                                findListAdapter=new DataAdapter(getActivity(),findList);
+                                //findListAdapter.set
+                                noteRecycler.setAdapter(findListAdapter);
+                                findListAdapter.notifyDataSetChanged();
+                            }
+                        }
+
+                        return true;
                     }
-                    findListAdapter=new DataAdapter(getActivity(),findList);
-                    findListAdapter.notifyDataSetChanged();
-                    noteRecycler.setAdapter(findListAdapter);
-                    //findListAdapter.set
-                }
-                return false;
+
+                    //在输入时触发的方法，当字符真正显示到searchView中才触发，像是拼音，在输入法组词的时候不会触发
+                    @Override
+                    public boolean onQueryTextChange(String newText) {
+                        if (TextUtils.isEmpty(newText)){
+                            noteRecycler.setAdapter(mAdapter);
+                        }
+                        else {
+                            findList.clear();
+                            for (int i=0;i<mDatas.size();i++){
+                                AskBean information=mDatas.get(i);
+                                if (information.getTitle().contains(newText))
+                                {
+                                    findList.add(information);
+                                }
+                            }
+                            findListAdapter=new DataAdapter(getActivity(),findList);
+                            findListAdapter.notifyDataSetChanged();
+                            noteRecycler.setAdapter(findListAdapter);
+                            //findListAdapter.set
+                        }
+                        return false;
+                    }
+                });
+
+                noteRecycler.setLayoutManager(mLayoutManager);
+                //noteRecycler.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
+                //使用系统默认分割线
+                noteRecycler.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
+                //mAdapter.notifyDataSetChanged();
+
+                //mAdapter=new DataAdapter(getActivity(),)
+
             }
-        });
 
-        noteRecycler.setLayoutManager(mLayoutManager);
-        //noteRecycler.setLayoutManager(new LinearLayoutManager(getActivity(),LinearLayoutManager.VERTICAL,false));
-        //使用系统默认分割线
-        noteRecycler.addItemDecoration(new DividerItemDecoration(getActivity(),DividerItemDecoration.VERTICAL));
-        //mAdapter.notifyDataSetChanged();
+            private void inititemClick() {
+                noteRecycler.addOnItemTouchListener(
+                        new RecyclerItemClickListener(getActivity(), noteRecycler ,new RecyclerItemClickListener.OnItemClickListener() {
+                            @Override public void onItemClick(View view, int position) {
+                                // do whatever
+                                final TextView title=(TextView)view.findViewById(R.id.item_title);
+                                asktitleStr=title.getText().toString();
+                                Toast.makeText(getActivity(), asktitleStr, Toast.LENGTH_SHORT).show();
+                                startAsk_homeActivity();
 
-        //mAdapter=new DataAdapter(getActivity(),)
+                            }
 
-    }
+                            @Override public void onLongItemClick(View view, int position) {
+                                // do whatever
+                            }
+                        })
+                );
+            }
 
-    private void inititemClick() {
-        noteRecycler.addOnItemTouchListener(
-                new RecyclerItemClickListener(getActivity(), noteRecycler ,new RecyclerItemClickListener.OnItemClickListener() {
-                    @Override public void onItemClick(View view, int position) {
-                        // do whatever
-                        final TextView title=(TextView)view.findViewById(R.id.item_title);
-                        asktitleStr=title.getText().toString();
-                        Toast.makeText(getActivity(), asktitleStr, Toast.LENGTH_SHORT).show();
-                        startAsk_homeActivity();
-
-                    }
-
-                    @Override public void onLongItemClick(View view, int position) {
-                        // do whatever
-                    }
-                })
-        );
-    }
-
-    //跳转到添加问题页面
-    private void startAsk_homeActivity() {
-        Intent intent=new Intent(getActivity(),theask_detailsActivity.class);
-        getActivity().startActivity(intent);
-    }
+            //跳转到添加问题页面
+            private void startAsk_homeActivity() {
+                Intent intent=new Intent(getActivity(),theask_detailsActivity.class);
+                getActivity().startActivity(intent);
+            }
 
 
 
-    @Override
-    public boolean onMenuItemClick(MenuItem item) {
-        switch (item.getItemId()) {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                switch (item.getItemId()) {
 
-            case R.id.add_ask:
-                //Toast.makeText(getActivity(), "Clicked", Toast.LENGTH_LONG).show();
-                Intent i = new Intent(getActivity(), add_asklabelActivity.class);
-                //Intent i = new Intent(getActivity(), addAskActivity.class);
-                startActivity(i);
-                break;
+                    case R.id.add_ask:
+                        //Toast.makeText(getActivity(), "Clicked", Toast.LENGTH_LONG).show();
+                        Intent i = new Intent(getActivity(), add_asklabelActivity.class);
+                        //Intent i = new Intent(getActivity(), addAskActivity.class);
+                        startActivity(i);
+                        break;
 
-            case R.id.home_label:
+                    case R.id.home_label:
                // Toast.makeText(getActivity(), "Clicked", Toast.LENGTH_LONG).show();
                 Intent i2 = new Intent(getActivity(), all_labelActivity.class);
                 //Intent i = new Intent(getActivity(), addAskActivity.class);
